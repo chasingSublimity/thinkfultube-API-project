@@ -14,21 +14,19 @@ function getApiData(searchTerm, callbackFunction) {
 // funtion to display data
 function displayResults(data) {
 	var results = '';
-	console.log(data);
-	// display video titles
 	if (data.items.length > 0) {
 		data.items.forEach(function(item) {
 			results += 
-				'<a href="https://www.youtube.com/watch?v="' + item.id.videoId + '">' + 
+				'<a href="https://www.youtube.com/watch?v=' + item.id.videoId + '">' + 
 					'<img src="' + item.snippet.thumbnails.medium.url + '"/>' +
 				'</a>' +
-				'<p>' + item.snippet.title + '</p>';
-		});
+				'<p>' + item.snippet.title + '</p>' +
+				'<p><a href="https://www.youtube.com/channel/' + item.snippet.channelId + '">' + 'More from this channel</p>';
+			});
 	} else {
 		results += '<p>No results</p>';
 	}
 	$('.js-search-results').html(results);
-	console.log(results);
 }
 
 // function to init event listener
